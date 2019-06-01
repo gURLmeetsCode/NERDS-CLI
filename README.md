@@ -1,6 +1,4 @@
-<!-- git push -u origin master -->
-
-# Project Title
+# Boilermaker
 
 This is boilermaker! This project allows you to get up an running with  NODE, EXPRESS, REACT, REDUX, SEQUELIZE (NERDS STACK).
 
@@ -9,6 +7,11 @@ This is boilermaker! This project allows you to get up an running with  NODE, EX
 To get started:
 
 Please make sure you have nodemon installed globally.
+
+```
+npm install nodemon -g
+
+```
 
 ### Prerequisites
 
@@ -45,9 +48,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+Please checkout package.json to review project dependencies.
 
 
 ## Authors

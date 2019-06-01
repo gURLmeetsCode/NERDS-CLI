@@ -4,7 +4,8 @@
   "description": "NERDS-cli",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "webpack -w & nodemon ./server/main.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,35 @@
   "bugs": {
     "url": "https://github.com/gURLmeetsCode/NERDS-CLI/issues"
   },
-  "homepage": "https://github.com/gURLmeetsCode/NERDS-CLI#readme"
+  "homepage": "https://github.com/gURLmeetsCode/NERDS-CLI#readme",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "express": "^4.15.3",
+    "express-session": "^1.15.6",
+    "morgan": "^1.8.2",
+    "pg": "^6.4.0",
+    "pg-hstore": "^2.3.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "sequelize": "^4.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^7.1.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "webpack": "^3.9.1",
+    "webpack-dev-server": "^2.9.5",
+    "webpack-node-externals": "^1.7.2"
+  }
 }
