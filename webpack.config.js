@@ -1,20 +1,25 @@
 module.exports = {
-  // babel-polyfill enables async-await in our client js
-  entry: ['babel-polyfill', './client/index.js'],
+  entry: ['babel-polyfill', './client/main'],
   output: {
     path: __dirname,
     filename: './public/bundle.js'
   },
-  context: __dirname,
+  devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader"
-        }
+        loader: 'babel-loader'
+      },
+      // use the style-loader/css-loader combos for anything matching the .css extension
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ]
       }
     ]
   }
-}
+};
