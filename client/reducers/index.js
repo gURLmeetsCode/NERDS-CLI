@@ -2,40 +2,66 @@ import axios from 'axios'
 
 
 // ACTION TYPES
-const GET_USERS = 'GET_USERS'
+const GOT_USER = 'GOT_USER'
 
-// ACTION CREATORS
-export const gotJSONDataActionCreator = (data) => ({
-  type: GET_USERS,
-  users: data
+
+// ACTION CREATOR
+const gotMeActionCreator = (user) => ({
+  type: GOT_USER,
+  user
 })
 
 // THUNK CREATORS
-export const getJSONDataThunk = () => {
+
+export const getMeThunk = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get('https://jsonplaceholder.typicode.com/users')
-      dispatch(gotJSONDataActionCreator(response.data))
+      const response = await axios.get('/auth/me')
+      dispatch(gotMeActionCreator(response.data))
     }
-    catch(err) {
-      console.error(err, "your thunky thunk is broken shawty!")
+    catch (e) {
+      console.error(e, "your get me thunky thunk is broken shawty!")
+    }
+  }
+}
+
+export const getLoggedInUserThunk = (obj) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put('/api/auth/login', obj)
+      dispatch(gotMeActionCreator(response.data))
+    }
+    catch (e) {
+      console.error(e, "your get logged in user thunky thunk is broken shawty!")
     }
   }
 }
 
 
+export const getALoggedOutUserThunk = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete("/auth/logout/")
+      dispatch(gotMeActionCreator(response.data))
+    }
+    catch (e) {
+      console.error(e, "your get me thunky thunk is broken shawty!")
+    }
+  }
+}
+
 
 const initialState = {
-  users: []
+  user: {}
 }
 
 
 export const reducer = (state = initialState, action) => {
   switch(action.type){
-    case GET_USERS:
+   case GOT_USER:
       return {
         ...state,
-        users: action.users
+        user: action.user
       }
     default:
       return state

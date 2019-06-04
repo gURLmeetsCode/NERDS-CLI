@@ -6,7 +6,7 @@ const morgan = require('morgan')
 const passport = require('passport');
 const app = express()
 // we will need our sequelize instance from somewhere
-const db = require('./db');
+const db = require('./db/_db')
 
 // configure and create our database store
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -50,6 +50,9 @@ passport.deserializeUser(async (id, done) => {
     done(err)
   }
 })
+
+
+app.use('/api', require('./api/index')); // include our routes!
 
 
 // Static middleware
