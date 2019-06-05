@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-
+// don't forget that these are already mounted on /api!
 router.use('/auth', require('./auth'))
 
 
@@ -11,4 +11,4 @@ router.use((req, res, next) => {
 })
 
 
-module.exports = router;
+// module.exports = router;

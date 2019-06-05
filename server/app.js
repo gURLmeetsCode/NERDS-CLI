@@ -5,12 +5,19 @@ const path = require('path')
 const morgan = require('morgan')
 const passport = require('passport');
 const app = express()
+
+
 // we will need our sequelize instance from somewhere
 const db = require('./db/_db')
+
 
 // configure and create our database store
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const dbStore = new SequelizeStore({ db: db });
+
+if (process.env.NODE_ENV === 'development') {
+  require('../localSecrets'); // this will mutate the process.env object with your secrets.
+}
 
 // Logging middleware
 app.use(morgan('dev'))
@@ -52,8 +59,8 @@ passport.deserializeUser(async (id, done) => {
 })
 
 
-app.use('/api', require('./api/index')); // include our routes!
-
+// auth mount + routes
+app.use('/auth', require('./routes/auth'))
 
 // Static middleware
 app.use(express.static(path.join(__dirname, '..', 'public')))

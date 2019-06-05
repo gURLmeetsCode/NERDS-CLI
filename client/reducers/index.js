@@ -1,15 +1,19 @@
 import axios from 'axios'
 
 
+const initialState = {
+  user: {}
+}
+
 // ACTION TYPES
 const GOT_USER = 'GOT_USER'
-
 
 // ACTION CREATOR
 const gotMeActionCreator = (user) => ({
   type: GOT_USER,
   user
 })
+
 
 // THUNK CREATORS
 
@@ -28,7 +32,7 @@ export const getMeThunk = () => {
 export const getLoggedInUserThunk = (obj) => {
   return async (dispatch) => {
     try {
-      const response = await axios.put('/api/auth/login', obj)
+      const response = await axios.put('/auth/login', obj)
       dispatch(gotMeActionCreator(response.data))
     }
     catch (e) {
@@ -37,12 +41,23 @@ export const getLoggedInUserThunk = (obj) => {
   }
 }
 
+export const addANewUserThunk = (obj) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post("/auth/signup", obj)
+      dispatch(gotMeActionCreator(response.data))
+    }
+    catch (e) {
+      console.error(e, "your add a user thunky thunk is broken shawty!")
+    }
+  }
+}
 
 export const getALoggedOutUserThunk = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.delete("/auth/logout/")
-      dispatch(gotMeActionCreator(response.data))
+      const response = await axios.delete("/auth/logout")
+      dispatch(gotMeActionCreator(initialState.user))
     }
     catch (e) {
       console.error(e, "your get me thunky thunk is broken shawty!")
@@ -50,10 +65,6 @@ export const getALoggedOutUserThunk = () => {
   }
 }
 
-
-const initialState = {
-  user: {}
-}
 
 
 export const reducer = (state = initialState, action) => {

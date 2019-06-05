@@ -9,9 +9,28 @@ body {
 
 }
 
+.nav-bar{
+  background: #373F51;
+}
+
+#signup-btn{
+border-color: #A9BCD0;
+color: #FFF;
+}
+
+#login-btn{
+  background:  #A9BCD0;
+}
+
+#create-btn{
+  background: #58A4B0;
+  color: #FFF;
+}
+
 .form-title{
   font-family: 'Raleway', sans-serif;
   text-align: center;
+  color: #373F51;
 }
 
 .form-submission{
@@ -28,12 +47,48 @@ body {
    display: block;
    margin-bottom: 1rem;
    width: 100%;
+   height: 30px;
+   color: #373F51;
 }
 
-.submit-btn{
-  background:#58A4B0;
+#submit-btn{
+  background:  #A9BCD0;
+}
+
+.hero{
+  background:  #FFF;
+  height: 300px;
+  width: 100%;
+}
+
+.user-title{
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  color: #373F51;
+  font-size: 30px;
+  margin-top: 50%;
+}
+
+.lgout-btn-container{
+}
+
+#logout-btn{
+  background: red;
   color: #fff;
-  width: auto;
-  margin: 3rem 0;
-  text-transform: uppercase;
+}
+.google-container{
+  margin-top: -195px;
+  margin-left: 473px;
+  padding: 2rem;
+}
+
+.google-btn{
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.google-icon{
+  height: 30px;
+  width: 30px
 }

@@ -6,12 +6,27 @@ This is boilermaker! This project allows you to get up an running with  NODE, EX
 
 To get started:
 
-Please make sure you have nodemon installed globally.
+Before starting please make sure you do the following  
 
 ```
+createdb boilerMaker
 npm install nodemon -g
 
 ```
+You will need to create the database in order to get up and running. Use the createdb script if you have Postgres installed. Otherwise use the psql terminal.
+
+```
+psql
+CREATE DATABASE boilerMaker;
+\c boilerMaker
+```
+
+In a seperate terminal run the following script:
+
+```
+npm run seed
+```
+
 
 ### Prerequisites
 

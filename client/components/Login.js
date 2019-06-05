@@ -1,7 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
+import LocalLoginForm from './local-login-form'
+import OauthLogin from './OauthLogin'
+import SignUpForm from './SignUp'
 import {getLoggedInUserThunk } from '../reducers/index'
+
 
 const Login = (props) => {
 
@@ -11,21 +14,8 @@ const Login = (props) => {
     <div>
       <h1 className='form-title'>Member Login</h1>
       <div>
-        <form className='form-submission' onSubmit={handleSubmit}>
-          <div>
-            <div>
-              <label htmlFor='email'>Email</label>
-              <input type='email' name='email' className='input' />
-            </div>
-            <div >
-              <label htmlFor='email'>Password</label>
-              <input type='password' name='password' className='input' />
-            </div>
-            <div>
-              <button type='submit' className='submit-btn'>Submit</button>
-            </div>
-          </div>
-        </form>
+        <LocalLoginForm handleSubmit={handleSubmit}/>
+        <OauthLogin />
       </div>
     </div>
   )
@@ -40,6 +30,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       dispatch(getLoggedInUserThunk ({email, password}))
+      .then(() => {
+        history.push('/home')
+      })
     }
   }
 }

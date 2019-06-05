@@ -12,6 +12,9 @@ const User = db.define('users', {
       isEmail: true
     }
   },
+  googleId: {
+    type: Sequelize.STRING
+  },
   // make sure that the password we store is salted and hashed! NEVER store the plain password
   password:{
     type: Sequelize.STRING

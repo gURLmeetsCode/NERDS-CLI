@@ -3,8 +3,8 @@ const {User} = require('../db/models/database')
 
 module.exports = router
 
-// router.use('/google', require('./oauth'))
 
+router.use('/google', require('./oauth'))
 
 
 router.get('/me', (req, res, next) => {
@@ -53,9 +53,12 @@ router.post('/signup', async (req, res, next) => {
 
 
 router.delete('/logout', (req, res, next) => {
-  req.logout()
-  req.session.destroy((err) => {
-    if (err) return next(err)
+  try {
+    req.logout()
+    req.session.destroy()
     res.status(204).end()
-  })
+  }
+  catch (err) {
+    next(err)
+  }
 })
