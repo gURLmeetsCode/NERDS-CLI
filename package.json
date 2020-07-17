@@ -28,7 +28,7 @@
     "crypto": "^1.0.1",
     "express": "^4.15.3",
     "express-session": "^1.15.6",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "morgan": "^1.8.2",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0",
